@@ -1,13 +1,13 @@
-const colors = ["blue", "red", "yellow", "green"];
-const seccuenciaAleatoria = [];
-const secuenciaUsuario = [];
+var colors = ["blue", "red", "yellow", "green"];
+var seccuenciaAleatoria = [];
+var secuenciaUsuario = [];
 
 $(".btn").click(function () {
-  var eleccionJugador = $(this).attr("id");
-  console.log(eleccionJugador);
-  secuenciaUsuario = secuenciaUsuario.push(eleccionJugador);
+  var colorSeleccionado = $(this).attr("id");
+  secuenciaUsuario.push(colorSeleccionado);
 
-  sonidos(eleccionJugador);
+  console.log(colorSeleccionado);
+  sonidos;
 });
 
 // function secuenciaAleatoria() {
@@ -28,22 +28,7 @@ $(".btn").click(function () {
 //   }
 // }
 
-function sonidos(eleccionJugador) {
-  const rutaSonido = "sounds/" + eleccionJugador + ".mp3";
-  console.log("Intentando reproducir:", rutaSonido);
-  
-  const audio = new Audio(rutaSonido);
-  audio.volume = 1.0;
-  
-  audio.play().catch(function(error) {
-    console.error("❌ Error al reproducir sonido:", error);
-  });
-  
-  audio.oncanplay = function() {
-    console.log("✅ Sonido listo para reproducir");
-  };
-  
-  audio.onerror = function() {
-    console.error("❌ Error al cargar el archivo:", rutaSonido);
-  };
+function sonidos(color) {
+  var audio = new Audio("sounds/" + color + ".mp3");
+  audio.play();
 }
