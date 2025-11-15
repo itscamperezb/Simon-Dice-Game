@@ -46,12 +46,12 @@ function eleccionAleatoria() {
 //llamadas serán cuando en la función "validarSecuencia" se cumpla la condición secuenciaAleatoria[i] === secuenciaUsuario[i]
 function validarSecuencia(i) {
   if (secuenciaAleatoria[i] === secuenciaUsuario[i]) {
-    console.log("correcto");
-  }
-  if (secuenciaAleatoria.length === secuenciaUsuario.length) {
-    setTimeout(function () {
-      secuenciaAleatoria();
-    }, 1000);
+    if (secuenciaAleatoria.length === secuenciaUsuario.length) {
+      setTimeout(function () {
+        eleccionAleatoria();
+      }, 1000);
+      console.log("correcto");
+    }
   }
 }
 
