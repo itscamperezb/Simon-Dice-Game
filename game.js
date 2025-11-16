@@ -10,10 +10,8 @@ $(".btn").click(function () {
   var colorSeleccionado = $(this).attr("id");
   secuenciaUsuario.push(colorSeleccionado);
 
-  console.log(colorSeleccionado);
-
   sonidos(colorSeleccionado);
-  validarSecuencia();
+  validarSecuencia(secuenciaUsuario.length - 1);
   animacionBoton(colorSeleccionado);
 });
 //------------------------------------------------------------------------------------------------------
@@ -37,32 +35,28 @@ function eleccionAleatoria() {
   secuenciaAleatoria.push(colorAleatorio);
   console.log(secuenciaAleatoria);
 
-  validarSecuencia();
   sonidos(colorAleatorio);
   animacionBoton(colorAleatorio);
 }
 //-------------------------------------------------------------------------------------------------
 //La primera activación de esta función será cuando se cumpla start = true, una vez esto ocurra las siguientes
 //llamadas serán cuando en la función "validarSecuencia" se cumpla la condición secuenciaAleatoria[i] === secuenciaUsuario[i]
-function validarSecuencia(i) {
-  if (secuenciaAleatoria[i] === secuenciaUsuario[i]) {
+function validarSecuencia(respuestaNivel) {
+  if (secuenciaAleatoria[respuestaNivel] === secuenciaUsuario[respuestaNivel]) {
+    console.log("correcto");
     if (secuenciaAleatoria.length === secuenciaUsuario.length) {
       setTimeout(function () {
         eleccionAleatoria();
       }, 1000);
-      console.log("correcto");
     }
+  } else {
+    console.log("mal");
   }
 }
-
 function sonidos(color) {
   var audio = new Audio("sounds/" + color + ".mp3");
   audio.play();
 }
-
-// function finDelJuego() {
-//   sonidos("wrong");
-// }
 
 function animacionBoton(color) {
   $("#" + color).addClass("pressed");
