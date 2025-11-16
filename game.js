@@ -50,7 +50,7 @@ function validarSecuencia(respuestaNivel) {
       }, 1000);
     }
   } else {
-    console.log("mal");
+    animacionGameover();
   }
 }
 function sonidos(color) {
@@ -63,4 +63,21 @@ function animacionBoton(color) {
   setTimeout(function () {
     $("#" + color).removeClass("pressed");
   }, 100);
+}
+
+function animacionGameover() {
+  sonidos("wrong");
+  $("#body").addClass("game-over");
+  setTimeout(function () {
+    $("#body").removeClass("game-over");
+  }, 200);
+  $("#level-title").text("GAME OVER, presiona cualquier tecla para reiniciar");
+
+  reiniciar();
+}
+
+function reiniciar() {
+  secuenciaAleatoria = [];
+  nivel = 0;
+  start = false;
 }
